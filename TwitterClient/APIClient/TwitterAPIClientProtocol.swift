@@ -10,6 +10,6 @@ import Combine
 
 protocol TwitterAPIClientProtocol {
     func getAccessToken() -> Future<TwitterOAuthTokenResponse, TwitterAPIError>
-    func searchTweetsWithKeyword(accessToken: String, query: String) -> Future<[Tweet], TwitterAPIError>
+    func searchTweetsWithKeyword(accessToken: String, query: String, maxId: String) -> Future<[Tweet], TwitterAPIError>
 }
 

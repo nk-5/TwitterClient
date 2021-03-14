@@ -23,7 +23,7 @@ struct MockTwitterAPIClient: TwitterAPIClientProtocol {
         }
     }
     
-    func searchTweetsWithKeyword(accessToken: String, query: String) -> Future<[Tweet], TwitterAPIError> {
+    func searchTweetsWithKeyword(accessToken: String, query: String, maxId: String) -> Future<[Tweet], TwitterAPIError> {
         return Future<[Tweet], TwitterAPIError> { promise in
             let jsonString = MockTwitterAPIResponseData.search
             
@@ -39,7 +39,8 @@ struct MockTwitterAPIClient: TwitterAPIClientProtocol {
             }
             
             let tweets = twitterAPISearchResponse.statuses.compactMap {
-                Tweet(tweet: $0.text,
+                Tweet(id: "hoge",
+                      tweet: $0.text,
                       userName: $0.user.name,
                       screenName: $0.user.screenName,
                       createdAt: $0.createdAt,

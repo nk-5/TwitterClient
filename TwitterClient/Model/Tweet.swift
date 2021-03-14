@@ -8,6 +8,7 @@
 import Foundation
 
 struct Tweet: Hashable {
+    let id: String
     let tweet: String
     let userName: String
     let screenName: String

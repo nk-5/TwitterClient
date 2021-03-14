@@ -8,6 +8,7 @@
 import UIKit
 import Cartography
 import Combine
+import CombineCocoa
 
 enum Section {
     case main
@@ -93,6 +94,10 @@ final class TweetSearchViewController: UIViewController {
             .sink(receiveValue: {
                 self.dataSource?.apply(self.viewModel.snapshot, animatingDifferences: false)
             }).store(in: &cancellableSet)
+       
+        tweetListCollectionView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
+            self?.viewModel.search(shouldLoadMoreContent: true)
+        }).store(in: &cancellableSet)
     }
 }
 

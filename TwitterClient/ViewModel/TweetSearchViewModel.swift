@@ -12,7 +12,7 @@ import UIKit
 final class TweetSearchViewModel {
     var searchText: String = "" {
         didSet {
-            search(keyword: searchText)
+            search()
         }
     }
     
@@ -41,11 +41,15 @@ final class TweetSearchViewModel {
             .store(in: &cancellableSet)
     }
     
-    func search(keyword: String) {
+    func search(shouldLoadMoreContent: Bool = false) {
         // TODO: show alert token
         guard let accessToken = accessToken else { return }
-        
-        self.twitterAPIClient.searchTweetsWithKeyword(accessToken: accessToken, query: keyword)
+      
+        var maxId: String?
+        if shouldLoadMoreContent {
+            maxId = snapshot.itemIdentifiers.last?.id
+        }
+        self.twitterAPIClient.searchTweetsWithKeyword(accessToken: accessToken, query: searchText, maxId: maxId ?? "")
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -54,8 +58,10 @@ final class TweetSearchViewModel {
                 case .finished: break
                 }
             }, receiveValue: {
-                self.snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
-                self.snapshot.appendSections([.main])
+                if !shouldLoadMoreContent {
+                    self.snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
+                    self.snapshot.appendSections([.main])
+                }
                 self.snapshot.appendItems($0)
                 self.dataSourceUpdateSubject.send(())
             })

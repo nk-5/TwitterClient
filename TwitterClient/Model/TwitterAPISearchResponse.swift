@@ -11,6 +11,7 @@ struct TwitterAPISearchResponse: Decodable {
     let statuses: [Status]
 
     struct Status: Decodable {
+        let idStr: String
         let text: String
         let createdAt: Date
         let user: User

@@ -18,11 +18,11 @@
 		2420302625FDC41500269AD7 /* TweetSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420302525FDC41500269AD7 /* TweetSearchViewModel.swift */; };
 		2420303025FDC57300269AD7 /* MockTwitterAPIResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420302F25FDC57300269AD7 /* MockTwitterAPIResponseData.swift */; };
 		2420303E25FDC6C500269AD7 /* MockTwitterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420303D25FDC6C500269AD7 /* MockTwitterAPIClient.swift */; };
+		2420304425FDF00A00269AD7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2420304325FDF00A00269AD7 /* CombineCocoa */; };
 		242D482D25FC94AC00384B99 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 242D482C25FC94AC00384B99 /* Reusable */; };
 		242D483325FC95A900384B99 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D483225FC95A900384B99 /* Tweet.swift */; };
 		242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 242D483B25FC9E1B00384B99 /* SDWebImage */; };
 		2447261425FC638E00FAFEDD /* Cartography in Frameworks */ = {isa = PBXBuildFile; productRef = 2447261325FC638E00FAFEDD /* Cartography */; };
-		2447261A25FC639D00FAFEDD /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 2447261925FC639D00FAFEDD /* PinLayout */; };
 		2447262125FC67CA00FAFEDD /* TweetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447262025FC67CA00FAFEDD /* TweetViewCell.swift */; };
 		2466ABAF25FC4F0000DA436A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABAE25FC4F0000DA436A /* AppDelegate.swift */; };
 		2466ABB125FC4F0000DA436A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABB025FC4F0000DA436A /* SceneDelegate.swift */; };
@@ -86,9 +86,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				24202FF925FDA57D00269AD7 /* Alamofire in Frameworks */,
-				2447261A25FC639D00FAFEDD /* PinLayout in Frameworks */,
 				2447261425FC638E00FAFEDD /* Cartography in Frameworks */,
 				242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */,
+				2420304425FDF00A00269AD7 /* CombineCocoa in Frameworks */,
 				242D482D25FC94AC00384B99 /* Reusable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,10 +240,10 @@
 			name = TwitterClient;
 			packageProductDependencies = (
 				2447261325FC638E00FAFEDD /* Cartography */,
-				2447261925FC639D00FAFEDD /* PinLayout */,
 				242D482C25FC94AC00384B99 /* Reusable */,
 				242D483B25FC9E1B00384B99 /* SDWebImage */,
 				24202FF825FDA57D00269AD7 /* Alamofire */,
+				2420304325FDF00A00269AD7 /* CombineCocoa */,
 			);
 			productName = TwitterClient;
 			productReference = 2466ABAB25FC4F0000DA436A /* TwitterClient.app */;
@@ -318,10 +318,10 @@
 			mainGroup = 2466ABA225FC4F0000DA436A;
 			packageReferences = (
 				2447261225FC638E00FAFEDD /* XCRemoteSwiftPackageReference "Cartography" */,
-				2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */,
 				242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */,
 				242D483A25FC9E1B00384B99 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2420304225FDF00A00269AD7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 2466ABAC25FC4F0000DA436A /* Products */;
 			projectDirPath = "";
@@ -723,6 +723,14 @@
 				minimumVersion = 5.4.1;
 			};
 		};
+		2420304225FDF00A00269AD7 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
 		242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/Reusable";
@@ -747,14 +755,6 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/layoutBox/PinLayout";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -762,6 +762,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		2420304325FDF00A00269AD7 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2420304225FDF00A00269AD7 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
 		};
 		242D482C25FC94AC00384B99 /* Reusable */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -777,11 +782,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2447261225FC638E00FAFEDD /* XCRemoteSwiftPackageReference "Cartography" */;
 			productName = Cartography;
-		};
-		2447261925FC639D00FAFEDD /* PinLayout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */;
-			productName = PinLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

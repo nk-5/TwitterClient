@@ -62,11 +62,12 @@ final class TwitterAPIClient: TwitterAPIClientProtocol {
         }
     }
     
-    func searchTweetsWithKeyword(accessToken: String, query: String) -> Future<[Tweet], TwitterAPIError> {
+    func searchTweetsWithKeyword(accessToken: String, query: String, maxId: String) -> Future<[Tweet], TwitterAPIError> {
         let param: [String: String] = [
             "q": query,
             "locale": "ja",
             "count": "10",
+            "max_id": maxId,
             "include_entities": "false"
         ]
         let headers: HTTPHeaders = [
@@ -94,7 +95,8 @@ final class TwitterAPIClient: TwitterAPIClientProtocol {
                             }
                             
                             let tweets = twitterAPISearchResponse.statuses.compactMap {
-                                Tweet(tweet: $0.text,
+                                Tweet(id: $0.idStr,
+                                      tweet: $0.text,
                                       userName: $0.user.name,
                                       screenName: $0.user.screenName,
                                       createdAt: $0.createdAt,
