@@ -7,6 +7,7 @@
 
 import UIKit
 import Cartography
+import Combine
 
 enum Section {
     case main
@@ -16,7 +17,6 @@ final class TweetSearchViewController: UIViewController {
 
     private let searchTextField: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = .twitter
         textField.borderStyle = .roundedRect
         textField.leftViewMode = .unlessEditing
         let searchIcon = UIImageView(image: UIImage(systemName: "magnifyingglass")?.withRenderingMode(.alwaysOriginal).withTintColor(.lightGray))
@@ -38,12 +38,14 @@ final class TweetSearchViewController: UIViewController {
     private let viewModel = TweetSearchViewModel(twitterAPIClient: TwitterAPIClient())
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Tweet>?
+    private var cancellableSet: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
         setupView()
         setupDataSource()
+        bindUI()
     }
     
     private func setupView() {
@@ -72,5 +74,32 @@ final class TweetSearchViewController: UIViewController {
         }
         
         dataSource?.apply(viewModel.snapshot)
+    }
+    
+    private func bindUI() {
+        searchTextField.delegate = self
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
+            .debounce(for: 0.8, scheduler: RunLoop.main)
+            .compactMap { $0.object as? UITextField }
+            .compactMap { $0.text }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+            .receive(on: RunLoop.main)
+            .assign(to: \.searchText, on: viewModel)
+            .store(in: &cancellableSet)
+        
+        viewModel.dataSourceUpdateSubject
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                self.dataSource?.apply(self.viewModel.snapshot, animatingDifferences: false)
+            }).store(in: &cancellableSet)
+    }
+}
+
+extension TweetSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        tweetListCollectionView.isHidden = false
+        return false
     }
 }

@@ -10,8 +10,15 @@ import Combine
 import UIKit
 
 final class TweetSearchViewModel {
+    var searchText: String = "" {
+        didSet {
+            search(keyword: searchText)
+        }
+    }
+    
     private let twitterAPIClient: TwitterAPIClientProtocol
     private(set) var snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
+    private(set) var dataSourceUpdateSubject = PassthroughSubject<Void, Never>()
     private var cancellableSet: Set<AnyCancellable> = []
     private var accessToken: String?
 
@@ -47,7 +54,10 @@ final class TweetSearchViewModel {
                 case .finished: break
                 }
             }, receiveValue: {
+                self.snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
+                self.snapshot.appendSections([.main])
                 self.snapshot.appendItems($0)
+                self.dataSourceUpdateSubject.send(())
             })
             .store(in: &cancellableSet)
     }
