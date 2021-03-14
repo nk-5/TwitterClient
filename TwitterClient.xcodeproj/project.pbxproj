@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24202FF925FDA57D00269AD7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 24202FF825FDA57D00269AD7 /* Alamofire */; };
+		24202FFF25FDA59500269AD7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24202FFE25FDA59500269AD7 /* APIClient.swift */; };
+		2420300725FDA64000269AD7 /* TwitterAPIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420300625FDA64000269AD7 /* TwitterAPIClientProtocol.swift */; };
+		2420300C25FDA69100269AD7 /* TwitterAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420300B25FDA69100269AD7 /* TwitterAPIError.swift */; };
+		2420301125FDA70800269AD7 /* TwitterAPICredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420301025FDA70800269AD7 /* TwitterAPICredential.swift */; };
+		2420301625FDA9FE00269AD7 /* TwitterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420301525FDA9FE00269AD7 /* TwitterAPIClient.swift */; };
+		2420301B25FDBB4B00269AD7 /* TwitterAPIConfig.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2420301A25FDBB4B00269AD7 /* TwitterAPIConfig.txt */; };
+		2420302025FDBFEA00269AD7 /* TwitterAPISearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420301F25FDBFEA00269AD7 /* TwitterAPISearchResponse.swift */; };
+		2420302625FDC41500269AD7 /* TweetSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420302525FDC41500269AD7 /* TweetSearchViewModel.swift */; };
+		2420303025FDC57300269AD7 /* MockTwitterAPIResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420302F25FDC57300269AD7 /* MockTwitterAPIResponseData.swift */; };
+		2420303E25FDC6C500269AD7 /* MockTwitterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2420303D25FDC6C500269AD7 /* MockTwitterAPIClient.swift */; };
 		242D482D25FC94AC00384B99 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 242D482C25FC94AC00384B99 /* Reusable */; };
 		242D483325FC95A900384B99 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D483225FC95A900384B99 /* Tweet.swift */; };
 		242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 242D483B25FC9E1B00384B99 /* SDWebImage */; };
@@ -41,6 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24202FFE25FDA59500269AD7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2420300625FDA64000269AD7 /* TwitterAPIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIClientProtocol.swift; sourceTree = "<group>"; };
+		2420300B25FDA69100269AD7 /* TwitterAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIError.swift; sourceTree = "<group>"; };
+		2420301025FDA70800269AD7 /* TwitterAPICredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPICredential.swift; sourceTree = "<group>"; };
+		2420301525FDA9FE00269AD7 /* TwitterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIClient.swift; sourceTree = "<group>"; };
+		2420301A25FDBB4B00269AD7 /* TwitterAPIConfig.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TwitterAPIConfig.txt; sourceTree = SOURCE_ROOT; };
+		2420301F25FDBFEA00269AD7 /* TwitterAPISearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPISearchResponse.swift; sourceTree = "<group>"; };
+		2420302525FDC41500269AD7 /* TweetSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetSearchViewModel.swift; sourceTree = "<group>"; };
+		2420302F25FDC57300269AD7 /* MockTwitterAPIResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTwitterAPIResponseData.swift; sourceTree = "<group>"; };
+		2420303D25FDC6C500269AD7 /* MockTwitterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTwitterAPIClient.swift; sourceTree = "<group>"; };
 		242D483225FC95A900384B99 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		2447262025FC67CA00FAFEDD /* TweetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewCell.swift; sourceTree = "<group>"; };
 		2466ABAB25FC4F0000DA436A /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24202FF925FDA57D00269AD7 /* Alamofire in Frameworks */,
 				2447261A25FC639D00FAFEDD /* PinLayout in Frameworks */,
 				2447261425FC638E00FAFEDD /* Cartography in Frameworks */,
 				242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */,
@@ -88,10 +110,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24202FFD25FDA58700269AD7 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				24202FFE25FDA59500269AD7 /* APIClient.swift */,
+				2420300625FDA64000269AD7 /* TwitterAPIClientProtocol.swift */,
+				2420300B25FDA69100269AD7 /* TwitterAPIError.swift */,
+				2420301525FDA9FE00269AD7 /* TwitterAPIClient.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		2420302425FDC3EB00269AD7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2420302525FDC41500269AD7 /* TweetSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2420302D25FDC52400269AD7 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				2420302E25FDC53100269AD7 /* TwitterAPIResponse */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		2420302E25FDC53100269AD7 /* TwitterAPIResponse */ = {
+			isa = PBXGroup;
+			children = (
+				2420302F25FDC57300269AD7 /* MockTwitterAPIResponseData.swift */,
+				2420303D25FDC6C500269AD7 /* MockTwitterAPIClient.swift */,
+			);
+			path = TwitterAPIResponse;
+			sourceTree = "<group>";
+		};
 		242D483125FC955800384B99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				242D483225FC95A900384B99 /* Tweet.swift */,
+				2420301025FDA70800269AD7 /* TwitterAPICredential.swift */,
+				2420301F25FDBFEA00269AD7 /* TwitterAPISearchResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +188,10 @@
 		2466ABAD25FC4F0000DA436A /* TwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				2420302D25FDC52400269AD7 /* Mock */,
+				2420302425FDC3EB00269AD7 /* ViewModel */,
+				2420301A25FDBB4B00269AD7 /* TwitterAPIConfig.txt */,
+				24202FFD25FDA58700269AD7 /* APIClient */,
 				242D483125FC955800384B99 /* Model */,
 				2447261E25FC676E00FAFEDD /* View */,
 				2466ABAE25FC4F0000DA436A /* AppDelegate.swift */,
@@ -179,6 +243,7 @@
 				2447261925FC639D00FAFEDD /* PinLayout */,
 				242D482C25FC94AC00384B99 /* Reusable */,
 				242D483B25FC9E1B00384B99 /* SDWebImage */,
+				24202FF825FDA57D00269AD7 /* Alamofire */,
 			);
 			productName = TwitterClient;
 			productReference = 2466ABAB25FC4F0000DA436A /* TwitterClient.app */;
@@ -256,6 +321,7 @@
 				2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */,
 				242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */,
 				242D483A25FC9E1B00384B99 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 2466ABAC25FC4F0000DA436A /* Products */;
 			projectDirPath = "";
@@ -274,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2466ABBB25FC4F0100DA436A /* LaunchScreen.storyboard in Resources */,
+				2420301B25FDBB4B00269AD7 /* TwitterAPIConfig.txt in Resources */,
 				2466ABB825FC4F0100DA436A /* Assets.xcassets in Resources */,
 				2466ABB625FC4F0000DA436A /* Main.storyboard in Resources */,
 			);
@@ -300,11 +367,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2420303025FDC57300269AD7 /* MockTwitterAPIResponseData.swift in Sources */,
+				2420302625FDC41500269AD7 /* TweetSearchViewModel.swift in Sources */,
 				2466ABB325FC4F0000DA436A /* TweetSearchViewController.swift in Sources */,
 				242D483325FC95A900384B99 /* Tweet.swift in Sources */,
 				2466ABAF25FC4F0000DA436A /* AppDelegate.swift in Sources */,
+				2420302025FDBFEA00269AD7 /* TwitterAPISearchResponse.swift in Sources */,
 				2447262125FC67CA00FAFEDD /* TweetViewCell.swift in Sources */,
 				2466ABB125FC4F0000DA436A /* SceneDelegate.swift in Sources */,
+				2420301625FDA9FE00269AD7 /* TwitterAPIClient.swift in Sources */,
+				2420303E25FDC6C500269AD7 /* MockTwitterAPIClient.swift in Sources */,
+				24202FFF25FDA59500269AD7 /* APIClient.swift in Sources */,
+				2420300725FDA64000269AD7 /* TwitterAPIClientProtocol.swift in Sources */,
+				2420301125FDA70800269AD7 /* TwitterAPICredential.swift in Sources */,
+				2420300C25FDA69100269AD7 /* TwitterAPIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +715,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
 		242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/Reusable";
@@ -674,6 +758,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		24202FF825FDA57D00269AD7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		242D482C25FC94AC00384B99 /* Reusable */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */;
