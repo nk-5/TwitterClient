@@ -10,12 +10,8 @@ import Combine
 import UIKit
 
 final class TweetSearchViewModel {
-    var searchText: String = "" {
-        didSet {
-            search()
-        }
-    }
-    
+    var searchText: String = ""
+
     private let twitterAPIClient: TwitterAPIClientProtocol
     private(set) var snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
     private(set) var dataSourceUpdateSubject = PassthroughSubject<Void, Never>()
@@ -44,7 +40,9 @@ final class TweetSearchViewModel {
     func search(shouldLoadMoreContent: Bool = false) {
         // TODO: show alert token
         guard let accessToken = accessToken else { return }
-      
+     
+        saveSearchText()
+        
         var maxId: String?
         if shouldLoadMoreContent {
             maxId = snapshot.itemIdentifiers.last?.id
@@ -66,5 +64,9 @@ final class TweetSearchViewModel {
                 self.dataSourceUpdateSubject.send(())
             })
             .store(in: &cancellableSet)
+    }
+    
+    private func saveSearchText() {
+        UserDefaults.standard.addSearchText(searchText: searchText)
     }
 }
