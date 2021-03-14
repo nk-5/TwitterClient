@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Cartography",
+        "repositoryURL": "https://github.com/robb/Cartography",
+        "state": {
+          "branch": null,
+          "revision": "b75197ea134f42b5feafb04b526b37eb1a41034b",
+          "version": "4.0.0"
+        }
+      },
+      {
+        "package": "PinLayout",
+        "repositoryURL": "https://github.com/layoutBox/PinLayout",
+        "state": {
+          "branch": null,
+          "revision": "1a7614c3167cd8699c6096a8bfae77502d63cb40",
+          "version": "1.9.3"
+        }
+      },
+      {
+        "package": "Reusable",
+        "repositoryURL": "https://github.com/AliSoftware/Reusable",
+        "state": {
+          "branch": null,
+          "revision": "86cd17aa27e80d20bfe2ea57dd08958cf64664f4",
+          "version": "4.1.1"
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
+        "state": {
+          "branch": null,
+          "revision": "a6b6e44eadf0d39250c10a7cc0e3b91d0bdb0e94",
+          "version": "5.10.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

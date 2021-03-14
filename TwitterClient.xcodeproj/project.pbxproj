@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242D482D25FC94AC00384B99 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 242D482C25FC94AC00384B99 /* Reusable */; };
+		242D483325FC95A900384B99 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242D483225FC95A900384B99 /* Tweet.swift */; };
+		242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 242D483B25FC9E1B00384B99 /* SDWebImage */; };
+		2447261425FC638E00FAFEDD /* Cartography in Frameworks */ = {isa = PBXBuildFile; productRef = 2447261325FC638E00FAFEDD /* Cartography */; };
+		2447261A25FC639D00FAFEDD /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 2447261925FC639D00FAFEDD /* PinLayout */; };
+		2447262125FC67CA00FAFEDD /* TweetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2447262025FC67CA00FAFEDD /* TweetViewCell.swift */; };
 		2466ABAF25FC4F0000DA436A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABAE25FC4F0000DA436A /* AppDelegate.swift */; };
 		2466ABB125FC4F0000DA436A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABB025FC4F0000DA436A /* SceneDelegate.swift */; };
-		2466ABB325FC4F0000DA436A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABB225FC4F0000DA436A /* ViewController.swift */; };
+		2466ABB325FC4F0000DA436A /* TweetSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABB225FC4F0000DA436A /* TweetSearchViewController.swift */; };
 		2466ABB625FC4F0000DA436A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466ABB425FC4F0000DA436A /* Main.storyboard */; };
 		2466ABB825FC4F0100DA436A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2466ABB725FC4F0100DA436A /* Assets.xcassets */; };
 		2466ABBB25FC4F0100DA436A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466ABB925FC4F0100DA436A /* LaunchScreen.storyboard */; };
@@ -35,10 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		242D483225FC95A900384B99 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		2447262025FC67CA00FAFEDD /* TweetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewCell.swift; sourceTree = "<group>"; };
 		2466ABAB25FC4F0000DA436A /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2466ABAE25FC4F0000DA436A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2466ABB025FC4F0000DA436A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2466ABB225FC4F0000DA436A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2466ABB225FC4F0000DA436A /* TweetSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetSearchViewController.swift; sourceTree = "<group>"; };
 		2466ABB525FC4F0000DA436A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2466ABB725FC4F0100DA436A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2466ABBA25FC4F0100DA436A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2447261A25FC639D00FAFEDD /* PinLayout in Frameworks */,
+				2447261425FC638E00FAFEDD /* Cartography in Frameworks */,
+				242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */,
+				242D482D25FC94AC00384B99 /* Reusable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +88,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		242D483125FC955800384B99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				242D483225FC95A900384B99 /* Tweet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2447261E25FC676E00FAFEDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2466ABB225FC4F0000DA436A /* TweetSearchViewController.swift */,
+				2447262025FC67CA00FAFEDD /* TweetViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2466ABA225FC4F0000DA436A = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +128,10 @@
 		2466ABAD25FC4F0000DA436A /* TwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				242D483125FC955800384B99 /* Model */,
+				2447261E25FC676E00FAFEDD /* View */,
 				2466ABAE25FC4F0000DA436A /* AppDelegate.swift */,
 				2466ABB025FC4F0000DA436A /* SceneDelegate.swift */,
-				2466ABB225FC4F0000DA436A /* ViewController.swift */,
 				2466ABB425FC4F0000DA436A /* Main.storyboard */,
 				2466ABB725FC4F0100DA436A /* Assets.xcassets */,
 				2466ABB925FC4F0100DA436A /* LaunchScreen.storyboard */,
@@ -144,6 +174,12 @@
 			dependencies = (
 			);
 			name = TwitterClient;
+			packageProductDependencies = (
+				2447261325FC638E00FAFEDD /* Cartography */,
+				2447261925FC639D00FAFEDD /* PinLayout */,
+				242D482C25FC94AC00384B99 /* Reusable */,
+				242D483B25FC9E1B00384B99 /* SDWebImage */,
+			);
 			productName = TwitterClient;
 			productReference = 2466ABAB25FC4F0000DA436A /* TwitterClient.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +251,12 @@
 				Base,
 			);
 			mainGroup = 2466ABA225FC4F0000DA436A;
+			packageReferences = (
+				2447261225FC638E00FAFEDD /* XCRemoteSwiftPackageReference "Cartography" */,
+				2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */,
+				242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */,
+				242D483A25FC9E1B00384B99 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 2466ABAC25FC4F0000DA436A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,8 +300,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2466ABB325FC4F0000DA436A /* ViewController.swift in Sources */,
+				2466ABB325FC4F0000DA436A /* TweetSearchViewController.swift in Sources */,
+				242D483325FC95A900384B99 /* Tweet.swift in Sources */,
 				2466ABAF25FC4F0000DA436A /* AppDelegate.swift in Sources */,
+				2447262125FC67CA00FAFEDD /* TweetViewCell.swift in Sources */,
 				2466ABB125FC4F0000DA436A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +637,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Reusable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+		242D483A25FC9E1B00384B99 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.4;
+			};
+		};
+		2447261225FC638E00FAFEDD /* XCRemoteSwiftPackageReference "Cartography" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/robb/Cartography";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		242D482C25FC94AC00384B99 /* Reusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 242D482B25FC94AC00384B99 /* XCRemoteSwiftPackageReference "Reusable" */;
+			productName = Reusable;
+		};
+		242D483B25FC9E1B00384B99 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 242D483A25FC9E1B00384B99 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		2447261325FC638E00FAFEDD /* Cartography */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2447261225FC638E00FAFEDD /* XCRemoteSwiftPackageReference "Cartography" */;
+			productName = Cartography;
+		};
+		2447261925FC639D00FAFEDD /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2447261825FC639D00FAFEDD /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2466ABA325FC4F0000DA436A /* Project object */;
 }
