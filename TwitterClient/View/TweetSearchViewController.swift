@@ -102,6 +102,8 @@ final class TweetSearchViewController: UIViewController {
     
     private func bindUI() {
         searchTextField.delegate = self
+        searchHistoryCollectionView.delegate = self
+        
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
             .debounce(for: 0.8, scheduler: RunLoop.main)
             .compactMap { $0.object as? UITextField }
@@ -135,7 +137,6 @@ extension TweetSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         searchHistoryCollectionView.isHidden = true
-        tweetListCollectionView.isHidden = false
         viewModel.search()
        
         updateSearchHistory()
@@ -143,7 +144,17 @@ extension TweetSearchViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        tweetListCollectionView.isHidden = true
         searchHistoryCollectionView.isHidden = false
+    }
+}
+
+extension TweetSearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let historyCell = collectionView.cellForItem(at: indexPath) as? SearchHistoryViewCell else { return }
+      
+        viewModel.searchText = historyCell.history
+        searchTextField.text = historyCell.history
+        searchHistoryCollectionView.isHidden = true
+        viewModel.search()
     }
 }
