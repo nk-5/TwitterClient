@@ -27,6 +27,13 @@ final class TweetSearchViewController: UIViewController {
         return textField
     }()
     
+    private let clearButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Clear", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        return button
+    }()
+    
     private let tweetListCollectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .plain)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
@@ -64,6 +71,7 @@ final class TweetSearchViewController: UIViewController {
     
     private func setupView() {
         view.addSubview(searchTextField)
+        view.addSubview(clearButton)
         view.addSubview(tweetListCollectionView)
         view.addSubview(searchHistoryCollectionView)
 
@@ -79,6 +87,13 @@ final class TweetSearchViewController: UIViewController {
             $0.bottom == $2.bottom
             
             $3.edges == $2.edges
+        }
+        
+        constrain(view.safeAreaLayoutGuide, searchTextField, clearButton) {
+            $2.top == $0.top
+            $2.height == 30
+            $2.leading == $0.leading + 4
+            $2.trailing == $1.leading - 6
         }
     }
     
@@ -119,7 +134,11 @@ final class TweetSearchViewController: UIViewController {
             .sink(receiveValue: {
                 self.dataSource?.apply(self.viewModel.snapshot, animatingDifferences: false)
             }).store(in: &cancellableSet)
-       
+      
+        clearButton.tapPublisher.sink(receiveValue: {
+            self.viewModel.clearDataSource()
+        }).store(in: &cancellableSet)
+        
         tweetListCollectionView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
             self?.viewModel.search(shouldLoadMoreContent: true)
         }).store(in: &cancellableSet)

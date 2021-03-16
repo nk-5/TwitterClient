@@ -59,7 +59,7 @@ extension UserDefaults {
     }
     
     func addSearchText(searchText: String) {
-        if !searchHistories.contains(searchText) {
+        if !searchHistories.contains(searchText) && !searchText.isEmpty {
             var tmpHistories = searchHistories
             tmpHistories.append(searchText)
             set(tmpHistories, forKey: UserDefaultsKey.searchHistories.rawValue)

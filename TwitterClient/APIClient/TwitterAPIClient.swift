@@ -65,6 +65,7 @@ final class TwitterAPIClient: TwitterAPIClientProtocol {
     func searchTweetsWithKeyword(accessToken: String, query: String, maxId: String) -> Future<[Tweet], TwitterAPIError> {
         let param: [String: String] = [
             "q": query,
+            "lang": "ja",
             "locale": "ja",
             "count": "10",
             "max_id": maxId,

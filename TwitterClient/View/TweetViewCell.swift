@@ -8,6 +8,7 @@
 import UIKit
 import Reusable
 import SDWebImage
+import PinLayout
 
 final class TweetViewCell: UICollectionViewListCell, Reusable {
     private var config = UIListContentConfiguration.subtitleCell()
@@ -17,8 +18,10 @@ final class TweetViewCell: UICollectionViewListCell, Reusable {
         formatter.timeStyle = .none
         return formatter
     }()
-    
+
     func setup(tweet: Tweet) {
+//        config.imageProperties.
+        config.textToSecondaryTextVerticalPadding = 8
         config.text = tweet.tweet
         config.secondaryText = "@\(tweet.screenName) \(dateFormatter.string(from: tweet.createdAt))"
 
@@ -33,4 +36,24 @@ final class TweetViewCell: UICollectionViewListCell, Reusable {
             self.contentConfiguration = self.config
         }
     }
+    
+
+//    private func setupLayout() {
+//        contentView.pin.top().bottom(2).left().right()
+//    }
+//
+//    override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
+//        self.contentView.frame = self.bounds
+//        self.contentView.layoutIfNeeded()
+//        return contentView.frame.size
+//    }
+//
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+////        contentView.pin.width(size.width)
+//
+////        setupLayout()
+//
+//        print("size: width \(contentView.frame.width) , height \(contentView.frame.height)")
+//        return CGSize(width: contentView.frame.width, height: contentView.frame.height * 2)
+//    }
 }

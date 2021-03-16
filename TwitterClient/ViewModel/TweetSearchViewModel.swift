@@ -66,6 +66,12 @@ final class TweetSearchViewModel {
             .store(in: &cancellableSet)
     }
     
+    func clearDataSource() {
+        snapshot.deleteAllItems()
+        snapshot.appendSections([.main])
+        dataSourceUpdateSubject.send(())
+    }
+    
     private func saveSearchText() {
         UserDefaults.standard.addSearchText(searchText: searchText)
     }
