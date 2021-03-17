@@ -34,10 +34,10 @@ final class TweetSearchViewController: UIViewController {
         return button
     }()
     
-    private let tweetListCollectionView: UICollectionView = {
+    private let tweetListTableView: UITableView = {
         let config = UICollectionLayoutListConfiguration(appearance: .plain)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UITableView(frame: .zero, style: .plain)
         collectionView.backgroundColor = .white
         collectionView.register(cellType: TweetViewCell.self)
         return collectionView
@@ -56,7 +56,7 @@ final class TweetSearchViewController: UIViewController {
 //    private let viewModel = TweetSearchViewModel(twitterAPIClient: MockTwitterAPIClient())
     private let viewModel = TweetSearchViewModel(twitterAPIClient: TwitterAPIClient())
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Tweet>?
+    private var dataSource: UITableViewDiffableDataSource<Section, Tweet>?
     private var historyDataSource: UICollectionViewDiffableDataSource<Section, String>?
     private var historySnapshot = NSDiffableDataSourceSnapshot<Section, String>()
     private var cancellableSet: Set<AnyCancellable> = []
@@ -72,10 +72,10 @@ final class TweetSearchViewController: UIViewController {
     private func setupView() {
         view.addSubview(searchTextField)
         view.addSubview(clearButton)
-        view.addSubview(tweetListCollectionView)
+        view.addSubview(tweetListTableView)
         view.addSubview(searchHistoryCollectionView)
 
-        constrain(view.safeAreaLayoutGuide, searchTextField, tweetListCollectionView, searchHistoryCollectionView) {
+        constrain(view.safeAreaLayoutGuide, searchTextField, tweetListTableView, searchHistoryCollectionView) {
             $1.top == $0.top
             $1.height == 30
             $1.centerX == $0.centerX
@@ -98,9 +98,9 @@ final class TweetSearchViewController: UIViewController {
     }
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Tweet>(collectionView: tweetListCollectionView) { (collectionView: UICollectionView, indexPath: IndexPath, tweet: Tweet) -> UICollectionViewCell? in
+        dataSource = UITableViewDiffableDataSource<Section, Tweet>(tableView: tweetListTableView) { (tableView: UITableView, indexPath: IndexPath, tweet: Tweet) -> UITableViewCell? in
            
-            let cell: TweetViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            let cell: TweetViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.setup(tweet: tweet)
             return cell
         }
@@ -114,7 +114,7 @@ final class TweetSearchViewController: UIViewController {
 
         updateSearchHistory()
     }
-    
+
     private func bindUI() {
         searchTextField.delegate = self
         searchHistoryCollectionView.delegate = self
@@ -139,7 +139,7 @@ final class TweetSearchViewController: UIViewController {
             self.viewModel.clearDataSource()
         }).store(in: &cancellableSet)
         
-        tweetListCollectionView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
+        tweetListTableView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
             self?.viewModel.search(shouldLoadMoreContent: true)
         }).store(in: &cancellableSet)
     }
