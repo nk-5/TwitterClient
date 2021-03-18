@@ -35,6 +35,8 @@
 		2466ABC625FC4F0100DA436A /* TwitterClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABC525FC4F0100DA436A /* TwitterClientTests.swift */; };
 		2466ABD125FC4F0100DA436A /* TwitterClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2466ABD025FC4F0100DA436A /* TwitterClientUITests.swift */; };
 		470CC92D25FF7AB0002B3604 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 470CC92C25FF7AB0002B3604 /* PinLayout */; };
+		470CC93326022F4C002B3604 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 470CC93226022F4C002B3604 /* MBProgressHUD */; };
+		470CC9382602C9EC002B3604 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CC9372602C9EC002B3604 /* ProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,7 @@
 		2466ABCC25FC4F0100DA436A /* TwitterClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2466ABD025FC4F0100DA436A /* TwitterClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientUITests.swift; sourceTree = "<group>"; };
 		2466ABD225FC4F0100DA436A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		470CC9372602C9EC002B3604 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 				470CC92D25FF7AB0002B3604 /* PinLayout in Frameworks */,
 				24202FF925FDA57D00269AD7 /* Alamofire in Frameworks */,
 				2447261425FC638E00FAFEDD /* Cartography in Frameworks */,
+				470CC93326022F4C002B3604 /* MBProgressHUD in Frameworks */,
 				242D483C25FC9E1B00384B99 /* SDWebImage in Frameworks */,
 				2420304425FDF00A00269AD7 /* CombineCocoa in Frameworks */,
 				242D482D25FC94AC00384B99 /* Reusable in Frameworks */,
@@ -176,6 +180,7 @@
 				2466ABB225FC4F0000DA436A /* TweetSearchViewController.swift */,
 				2447262025FC67CA00FAFEDD /* TweetViewCell.swift */,
 				2420304B25FDF52900269AD7 /* SearchHistoryViewCell.swift */,
+				470CC9372602C9EC002B3604 /* ProgressHUD.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				24202FF825FDA57D00269AD7 /* Alamofire */,
 				2420304325FDF00A00269AD7 /* CombineCocoa */,
 				470CC92C25FF7AB0002B3604 /* PinLayout */,
+				470CC93226022F4C002B3604 /* MBProgressHUD */,
 			);
 			productName = TwitterClient;
 			productReference = 2466ABAB25FC4F0000DA436A /* TwitterClient.app */;
@@ -340,6 +346,7 @@
 				24202FF725FDA57D00269AD7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2420304225FDF00A00269AD7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				470CC92B25FF7AB0002B3604 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				470CC93126022F4C002B3604 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = 2466ABAC25FC4F0000DA436A /* Products */;
 			projectDirPath = "";
@@ -391,6 +398,7 @@
 				242D483325FC95A900384B99 /* Tweet.swift in Sources */,
 				2420304C25FDF52900269AD7 /* SearchHistoryViewCell.swift in Sources */,
 				2466ABAF25FC4F0000DA436A /* AppDelegate.swift in Sources */,
+				470CC9382602C9EC002B3604 /* ProgressHUD.swift in Sources */,
 				2420302025FDBFEA00269AD7 /* TwitterAPISearchResponse.swift in Sources */,
 				2447262125FC67CA00FAFEDD /* TweetViewCell.swift in Sources */,
 				2466ABB125FC4F0000DA436A /* SceneDelegate.swift in Sources */,
@@ -783,6 +791,14 @@
 				minimumVersion = 1.9.3;
 			};
 		};
+		470CC93126022F4C002B3604 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -815,6 +831,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 470CC92B25FF7AB0002B3604 /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
+		};
+		470CC93226022F4C002B3604 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 470CC93126022F4C002B3604 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

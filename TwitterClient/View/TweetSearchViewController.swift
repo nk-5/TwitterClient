@@ -9,6 +9,7 @@ import UIKit
 import Cartography
 import Combine
 import CombineCocoa
+import MBProgressHUD
 
 enum Section {
     case main
@@ -119,6 +120,16 @@ final class TweetSearchViewController: UIViewController {
         searchTextField.delegate = self
         searchHistoryCollectionView.delegate = self
         
+        clearButton.tapPublisher.sink(receiveValue: {
+            self.viewModel.clearDataSource()
+        }).store(in: &cancellableSet)
+        
+        tweetListTableView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.search(shouldLoadMoreContent: true)
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }).store(in: &cancellableSet)
+        
         NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: searchTextField)
             .debounce(for: 0.8, scheduler: RunLoop.main)
             .compactMap { $0.object as? UITextField }
@@ -133,15 +144,15 @@ final class TweetSearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {
                 self.dataSource?.apply(self.viewModel.snapshot, animatingDifferences: false)
+                MBProgressHUD.hide(for: self.view, animated: true)
             }).store(in: &cancellableSet)
-      
-        clearButton.tapPublisher.sink(receiveValue: {
-            self.viewModel.clearDataSource()
-        }).store(in: &cancellableSet)
+   
         
-        tweetListTableView.reachedBottomPublisher().sink(receiveValue: { [weak self] in
-            self?.viewModel.search(shouldLoadMoreContent: true)
-        }).store(in: &cancellableSet)
+        viewModel.apiErrorSubject
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                ProgressHUD.showErrorAlert(to: self.view, errorText: $0.localizedDescription)
+            }).store(in: &cancellableSet)
     }
     
     private func updateSearchHistory() {
@@ -157,6 +168,7 @@ extension TweetSearchViewController: UITextFieldDelegate {
         view.endEditing(true)
         searchHistoryCollectionView.isHidden = true
         viewModel.search()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
        
         updateSearchHistory()
         return false
@@ -175,5 +187,6 @@ extension TweetSearchViewController: UICollectionViewDelegate {
         searchTextField.text = historyCell.history
         searchHistoryCollectionView.isHidden = true
         viewModel.search()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
     }
 }

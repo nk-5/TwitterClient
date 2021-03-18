@@ -15,6 +15,7 @@ final class TweetSearchViewModel {
     private let twitterAPIClient: TwitterAPIClientProtocol
     private(set) var snapshot = NSDiffableDataSourceSnapshot<Section, Tweet>()
     private(set) var dataSourceUpdateSubject = PassthroughSubject<Void, Never>()
+    private(set) var apiErrorSubject = PassthroughSubject<TwitterAPIError, Never>()
     private var cancellableSet: Set<AnyCancellable> = []
     private var accessToken: String?
 
@@ -24,10 +25,11 @@ final class TweetSearchViewModel {
         snapshot.appendSections([.main])
 
         self.twitterAPIClient.getAccessToken()
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
                 switch completion {
                 case .failure(let error):
-                    // TODO: error handling
+                    self.apiErrorSubject.send(error)
                 break
                 case .finished: break
                 }
@@ -38,8 +40,10 @@ final class TweetSearchViewModel {
     }
     
     func search(shouldLoadMoreContent: Bool = false) {
-        // TODO: show alert token
-        guard let accessToken = accessToken else { return }
+        guard let accessToken = accessToken else {
+            apiErrorSubject.send(.nothingAccessToken)
+            return
+        }
      
         saveSearchText()
         
@@ -48,10 +52,11 @@ final class TweetSearchViewModel {
             maxId = snapshot.itemIdentifiers.last?.id
         }
         self.twitterAPIClient.searchTweetsWithKeyword(accessToken: accessToken, query: searchText, maxId: maxId ?? "")
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
                 switch completion {
                 case .failure(let error):
-                    // TODO: error handling
+                    self.apiErrorSubject.send(error)
                 break
                 case .finished: break
                 }
